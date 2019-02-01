@@ -1,0 +1,54 @@
+{{partial 'head'}}
+{{!-- {{#paper-stepper currentStep=currentStep onStepChange=(action (mut currentStep))
+onStepperCompleted=(action "saveModel") as |stepper|}}
+{{#stepper.step label="Select how it looks" as |step|}}
+{{#step.body}} --}}
+<div class="top">
+   {{!-- 
+   <h2> --}}
+      {{!-- <b><i style="margin-left: -470px;">APPLICATION OR REQUEST</i></b> --}}
+      {{!-- 
+   </h2>
+   --}}
+   {{!-- 
+</div>
+--}}
+<div class="container">
+   <h3><i><u style="margin-left: -511px;">Property Details</u></i></h3>
+   <form action="/action_page.php">
+      <br><span> Location of Property</span> 
+      <br>Street Address<br>  
+      {{validated-input  type="location" model=this  valuePath='location' placeholder="location" required=""}}
+      <br> country <br>
+      {{validated-input  type="text" model=this  valuePath='country' placeholder="country" required=""}}
+      <br>Down Payment Percentage  <br>
+      {{select-component listitem=downPaymentList selecteditemlist=paymentPercentage}}
+      <br>Current Mortgage Company<br>
+      {{select-component listitem=CompanytList selecteditemlist=Company }}
+      <br> Age  <br>
+      {{validated-input  type="number" model=this  valuePath='Age' placeholder="age" required=""}}
+      {{!--{{input  type="number"  value=Age  placeholder="age"}}--}}
+      <br>Occupation  <br>
+      {{validated-input  type="text" model=this  valuePath='occupation' placeholder="Enter your occupation" required=""}}
+      {{!--{{input  type="text"  value=occupation  placeholder="occupation"}}--}}
+      <br>How long have you been at your current job?  <br>
+      {{select-component listitem=jobOption selecteditemlist=Choice}}
+      <br> Household Income <br>
+      {{validated-input  type="number" model=this min="0" max="200" valuePath='income' placeholder="income" required=""}}
+      <br>
+      {{!-- <button class="btn" {{action "next" }} >next</button><br> --}}
+   </form>
+</div>
+</div>
+{{!-- {{/step.body}}
+{{#step.actions as |nextStep previousStep|}}
+{{#paper-button primary=true raised=true onClick=(action nextStep)}}
+Continue
+{{/paper-button}}
+{{#paper-button onClick=(action previousStep)}}
+Back
+{{/paper-button}}
+{{/step.actions}}
+{{/stepper.step}}--}}
+{{!-- add as many steps as necessary --}}
+{{!-- {{/paper-stepper}} --}}

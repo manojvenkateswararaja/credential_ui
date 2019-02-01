@@ -1,0 +1,295 @@
+{{partial 'head'}}
+{{#if showLogin}}
+<br>
+<style>
+   body {font-family: Arial, Helvetica, sans-serif;}
+   * {box-sizing: border-box}
+   /* Full-width input fields */
+   input[type=text], input[type=password] {
+   width: 90%;
+   padding: 15px;
+   margin: 5px 0 22px 0;
+   display: inline-block;
+   border: none;
+   background: #f1f1f1;
+   }
+    input[type=email], input[type=email] {
+   width: 90%;
+   padding: 15px;
+   margin: 5px 0 22px 0;
+   display: inline-block;
+   border: none;
+   background: #f1f1f1;
+   }
+    input[type=number], input[type=number] {
+   width: 90%;
+   padding: 15px;
+   margin: 5px 0 22px 0;
+   display: inline-block;
+   border: none;
+   background: #f1f1f1;
+   }
+     input[type=number]:focus, input[type=number]:focus { 
+   background-color: #ddd;
+   outline: none;
+   } 
+     input[type=email]:focus, input[type=email]:focus { 
+   background-color: #ddd;
+   outline: none;
+   } 
+    input[type=text]:focus, input[type=password]:focus { 
+   background-color: #ddd;
+   outline: none;
+   } 
+   hr {
+   border: 1px solid #f1f1f1;
+   margin-bottom: 25px;
+   } 
+   /* Set a style for all buttons */
+   button {
+   background-color: #4CAF50;
+   color: white;
+   padding: 14px 20px;
+   margin: 8px 0;
+   border: none;
+   cursor: pointer;
+   width: 100%;
+   opacity: 0.9;
+   }
+   button:hover {
+   opacity:1;
+   }
+   /* Extra styles for the cancel button */
+   .cancelbtn {
+   padding: 14px 20px;
+   background-color: #f44336;
+   }
+   /* Float cancel and signup buttons and add an equal width */
+   .cancelbtn, .signupbtn {
+   float: left;
+   width: 50%;
+   }
+   .bg{
+      /* Full height */
+    height: 100%; 
+     background-size:100% 100vh;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-image : url("https://www.housingwire.com/ext/resources/images/editorial/A-New-Big-Images/houses/house-and-money/House-money-chalkboard.jpg?1464113468");
+   }
+   body {
+    color:white;
+}
+   /* Add padding to container elements */
+   .container {
+   margin-top:  40px;
+   width:40%;
+  background-color:  black
+   }
+   div.container{
+     opacity: 0.7;
+   }
+   /* Clear floats */
+   .clearfix::after {
+   content: "";
+   clear: both;
+   display: table;
+   }
+   /* Change styles for cancel button and signup button on extra small screens */
+   @media screen and (max-width: 300px) {
+   .cancelbtn, .signupbtn {
+   width: 100%;
+   }
+   }
+</style>
+ <br>
+ <br> 
+ <div class="bg">
+   <div class="container">
+     
+      <h1>Sign Up</h1>  
+     
+      <b><em>Please fill in this form to create an account.</em></b>
+      <hr>
+      <label for="fname"><b>First Name</b></label> <br>
+      {{validated-input type="text"  model=this  valuePath='fname' placeholder="fname" required=true}}
+     
+      <label for="lname"><b>Last Name</b></label> <br>
+      {{validated-input type="text"  model=this  valuePath='lname' placeholder="lname" required=true}}
+      
+      <label for="email"><b>Email id</b></label> <br>
+      {{validated-input type="email"  model=this  valuePath='email' placeholder="email" required=true}}
+     
+      <label for="number"><b>Mobile number</b></label> <br>
+      {{validated-input type="number"  model=this  valuePath='number' placeholder="mobile number" required=true}}
+      
+       
+      <label for="Paw"><b>Password</b></label> <br>
+      {{validated-input type="password"  model=this  valuePath='password' placeholder="password" required=true}}
+      
+      <label for="re-Paw"><b>Retype Password</b></label> <br>
+      {{validated-input type="password"  model=this  valuePath='re-password' placeholder="re-password" required=true}}
+      <div class="clearfix">
+         <button type="button" class="cancelbtn">Cancel</button>
+         <button type="submit" class="signupbtn" {{action "signup"}}>Sign Up</button>
+      
+ 
+   {{#if showDialog}}
+   {{#paper-dialog class="flex-77" onClose=(action "closeDialog" "cancel") origin=dialogOrigin clickOutsideToClose=true}}
+   {{#paper-toolbar}}
+   {{#paper-toolbar-tools}}
+   Your sucessfully sign up !!
+   {{#paper-button iconButton=true onClick=(action "closeDialog" "cancel")}}{{paper-icon icon="close"}}{{/paper-button}}
+   {{/paper-toolbar-tools}}
+   {{/paper-toolbar}}
+   {{#paper-dialog-actions class="layout-row"}}
+   {{#paper-button onClick=(action "closeDialog" "cancel")}}Cancel{{/paper-button}}
+   {{#paper-button onClick=(action "okay" "ok")}}OK{{/paper-button}}
+   {{/paper-dialog-actions}}
+   {{/paper-dialog}}
+   {{/if}}
+   </div>
+   </div>
+ </div>
+<br>
+{{/if}}
+{{!-- 
+
+{{partial 'head'}}
+{{#if showLogin}}
+<br>
+<style>
+   body {font-family: Arial, Helvetica, sans-serif;}
+   * {box-sizing: border-box}
+   /* Full-width input fields */
+   input[type=text], input[type=password] {
+   width: 90%;
+   padding: 15px;
+   margin: 5px 0 22px 0;
+   display: inline-block;
+   border: none;
+   background: #f1f1f1;
+   }
+    input[type=email], input[type=email] {
+   width: 90%;
+   padding: 15px;
+   margin: 5px 0 22px 0;
+   display: inline-block;
+   border: none;
+   background: #f1f1f1;
+   }
+    input[type=number], input[type=number] {
+   width: 90%;
+   padding: 15px;
+   margin: 5px 0 22px 0;
+   display: inline-block;
+   border: none;
+   background: #f1f1f1;
+   }
+     input[type=number]:focus, input[type=number]:focus { 
+   background-color: #ddd;
+   outline: none;
+   } 
+     input[type=email]:focus, input[type=email]:focus { 
+   background-color: #ddd;
+   outline: none;
+   } 
+    input[type=text]:focus, input[type=password]:focus { 
+   background-color: #ddd;
+   outline: none;
+   } 
+   hr {
+   border: 1px solid #f1f1f1;
+   margin-bottom: 25px;
+   } 
+   /* Set a style for all buttons */
+   button {
+   background-color: #4CAF50;
+   color: white;
+   padding: 14px 20px;
+   margin: 8px 0;
+   border: none;
+   cursor: pointer;
+   width: 100%;
+   opacity: 0.9;
+   }
+   button:hover {
+   opacity:1;
+   }
+   /* Extra styles for the cancel button */
+   .cancelbtn {
+   padding: 14px 20px;
+   background-color: #f44336;
+   }
+   /* Float cancel and signup buttons and add an equal width */
+   .cancelbtn, .signupbtn {
+   float: left;
+   width: 50%;
+   }
+   /* Add padding to container elements */
+   .container {
+   margin-top:  40px;
+   width:40%;
+   }
+   /* Clear floats */
+   .clearfix::after {
+   content: "";
+   clear: both;
+   display: table;
+   }
+   /* Change styles for cancel button and signup button on extra small screens */
+   @media screen and (max-width: 300px) {
+   .cancelbtn, .signupbtn {
+   width: 100%;
+   }
+   }
+</style>
+ <br>
+ <br>
+   <div class="container">
+      <legend><em>Sign Up</em></legend>  
+      <b><em>Please fill in this form to create an account.</em></b>
+      <hr>
+      <label for="fname"><b>First Name</b></label> <br>
+      {{validated-input type="text"  model=this  valuePath='fname' placeholder="fname" required=true}}
+     
+      <label for="lname"><b>Last Name</b></label> <br>
+      {{validated-input type="text"  model=this  valuePath='lname' placeholder="lname" required=true}}
+      
+      <label for="email"><b>Email id</b></label> <br>
+      {{validated-input type="email"  model=this  valuePath='email' placeholder="email" required=true}}
+     
+      <label for="number"><b>Mobile number</b></label> <br>
+      {{validated-input type="number"  model=this  valuePath='number' placeholder="mobile number" required=true}}
+      
+       
+      <label for="Paw"><b>Password</b></label> <br>
+      {{validated-input type="password"  model=this  valuePath='password' placeholder="password" required=true}}
+      
+      <label for="re-Paw"><b>Retype Password</b></label> <br>
+      {{validated-input type="password"  model=this  valuePath='re-password' placeholder="re-password" required=true}}
+      <div class="clearfix">
+         <button type="button" class="cancelbtn">Cancel</button>
+         <button type="submit" class="signupbtn" {{action "signup"}}>Sign Up</button>
+      
+ 
+   {{#if showDialog}}
+   {{#paper-dialog class="flex-77" onClose=(action "closeDialog" "cancel") origin=dialogOrigin clickOutsideToClose=true}}
+   {{#paper-toolbar}}
+   {{#paper-toolbar-tools}}
+   Your sucessfully sign up !!
+   {{#paper-button iconButton=true onClick=(action "closeDialog" "cancel")}}{{paper-icon icon="close"}}{{/paper-button}}
+   {{/paper-toolbar-tools}}
+   {{/paper-toolbar}}
+   {{#paper-dialog-actions class="layout-row"}}
+   {{#paper-button onClick=(action "closeDialog" "cancel")}}Cancel{{/paper-button}}
+   {{#paper-button onClick=(action "okay" "ok")}}OK{{/paper-button}}
+   {{/paper-dialog-actions}}
+   {{/paper-dialog}}
+   {{/if}}
+   </div>
+   </div>
+<br>
+{{/if}} --}}

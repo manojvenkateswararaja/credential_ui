@@ -1,0 +1,65 @@
+{{!-- 
+<h2><b><i style="
+   margin-left: -67px;
+   ">APPLICATION OR REQUEST</i></b></h2>
+--}}
+{{!-- 
+<div class="Container">
+<div class="form">
+--}}
+<div class="top">
+   <div class="container-fluid">
+      <form >
+         <h3><b><i style="margin-left: -520px;">Employement Details</i></b></h3>
+         <div class="detail"><i style="margin-left: -451px;">Tell us about Employee details?</i></div>
+         <br>
+         <label>Type of employee</label>
+         {{select-component listitem=TypeOfemployee selecteditemlist=Employee}} 
+         1.{{Employee}}
+         2.{{TypeOfemployee}}
+         3.{{selectedlist}}
+         4.{{listitem}}
+         <br>
+         <label>
+         If employed (Gross Fixed Salary)
+         </label>
+         <span class="symbol">Rs</span>
+         <span>
+         {{validated-input  type="text" model=this  valuePath='salary' placeholder="salary" required=""}}
+         {{!--{{input type="text" value=salary placeholder="salary"}}--}}
+         </span>
+         <br>
+         <label>Company Name </label>
+         <span>
+         {{validated-input  type="text" model=this  valuePath='CompanyName' placeholder="company name" required=""}}
+         {{!--{{input type="text"   value=CompanyName placeholder="company name"}}--}}
+         </span>
+         <br>
+         <label>Existing EMI</label>
+         <span>
+         {{validated-input  type="number" model=this  valuePath='Emi' placeholder="previous Emi" required=""}}
+         {{!--{{input type="number" value=Emi placeholder="EMI"}}--}}
+         </span>
+         <br>
+         <label>
+         Spouse Income
+         </label>
+         <span class="symbol">$</span>
+         <span><label>Rupees</label>
+         {{validated-input  type="number" model=this  valuePath='Rupees' placeholder="income" required=""}}
+         {{!--{{input  type="text" class="field text currency nospin" value=Rupees size="10"}} --}}
+         </span>
+         <br>
+         <button class="btn" {{action "next"}}>Apply</button>
+         {{#if isShowingModalss}}
+         {{#modal-dialog onClose="next"
+         targetAttachment="center"
+         translucentOverlay=true}}
+         {{message}}
+         your requestId:{{reqid}}<br>
+         <button class="btn" {{action "proceed" }}>Proceed</button>
+         {{/modal-dialog}}
+         {{/if}}
+      </form>
+   </div>
+</div>

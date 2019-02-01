@@ -1,0 +1,49 @@
+{{#if showLogin}}
+<nav class="navbar  navbar-fixed-top" style="background-color:#499EF6">
+   <div class="container-fluid">
+      <div class="navbar-header">
+         <a class="navbar-brand" href="#"><img src="assets/images/logo1.jpg" alt="Smiley face" id="check-image-2"
+               height="50" width="70"></a>
+      </div>
+      {{#if showUser}}
+      <ul class="nav navbar-nav navbar-left">
+         <li class="mynavbar-right" {{action 'gotodashboard'}}>
+            <font size="4">Home</font>
+         </li>
+         &nbsp; &nbsp;
+         <li class="mynavbar-right" {{action 'gotorequests'}}>
+            <font size="4">Requests</font>
+         </li>
+      </ul>
+      {{/if}}
+      {{#if showUser}}
+      <ul class="nav navbar-nav navbar-right">
+         <li class="mynavbar-right"><span class="material-icons">&#xE8A6;</span></li>
+         <li class="mynavbar-right">
+            <font size="4">{{usertype}}{{firstname}}</font>
+         </li>
+         <li class="mynavbar-right" {{action 'logout'}}>
+            <font size="4">Log out</font>
+         </li>
+      </ul>
+      <!---<li  class="mynavbar-right"{{action 'logout'}}>Log Out</li>-->
+      {{else}}
+      <b class="mynavbar-right">
+         <font size="4">Credentialing</font>
+      </b>
+      <ul class="nav navbar-nav navbar-right">
+         <li class="mynavbar-right">
+            <font size="4">About Us</font>
+         </li>
+         &nbsp; &nbsp;
+         <li class="mynavbar-right">
+            <font size="4"><span class="glyphicon glyphicon-earphone"></span>ContactUs</font>
+         </li>
+         <li class="mynavbar-right">
+            <font size="4">{{#link-to 'signup'}}Sign Up{{/link-to}}</font>
+         </li>
+      </ul>
+      {{/if}}
+   </div>
+</nav>
+{{/if}}

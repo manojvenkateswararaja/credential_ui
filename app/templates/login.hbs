@@ -1,0 +1,42 @@
+{{partial 'head'}}
+
+<div class="user-up-container">
+    {{#if showLogin}}
+    {{/if}}
+    </div>
+
+<br>
+<br>
+<br>
+<br>
+<div class='container' style="background-color:lightgrey; text-align:center;margin-top: -2cm;width:25%;">
+   <br>
+   <header><i><b><u>Login</u></b></i></header>
+   <br>
+   <label><b>EmailID </b></label>
+   <i class="fa fa-envelope-o fa-fw"></i>{{validated-input type="email" model=this  valuePath='email' placeholder="email" required=true}}
+   <br>
+   <label><b>password</b></label>
+   <i class="fa fa-key fa-fw"></i>{{validated-input  type="password" model=this  valuePath='password' placeholder="password" required=true}}
+   <div >
+      <br>  
+      <button type="button" id="myButton" class="btn btn-primary" {{action "Submit" }}>Login</button>
+      {{#if isShowingModal}}
+      {{#modal-dialog onClose="Submit"
+      targetAttachment="center"
+      translucentOverlay=true}}
+      Login succesfull!!!
+      {{usertype}}
+      <button class="btn" {{action "proceed" usertype}}>Proceed</button>
+      {{/modal-dialog}}
+      {{/if}}
+      <div class="link">
+         <br>New User? {{#link-to 'signup'}}<i style="color:#2d8cff "> sign up </i>{{/link-to}}
+      </div>
+      <br>
+   </div>
+</div>
+<br>
+<br>
+<br>
+<br>

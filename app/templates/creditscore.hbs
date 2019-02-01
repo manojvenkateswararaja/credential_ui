@@ -1,0 +1,137 @@
+{{partial 'head'}}
+{{#if showUserDetails}}
+{{/if}}
+<div class="container-fluid" style="">
+
+   <br>
+   <div class="container">
+      <br>
+      <br>
+      <h4 style="text-align:center;"><em>SCORE DETAILS</em></h4>
+
+      <div class="well">
+         <div class="row" style="">
+            <div class="col-md-2" style="background-color:;"><i style="margin-left:-10%">RequestId:</i><i id="req">{{lastdetails.requestid}}</i></div>
+            <div class="col-md-3">
+               <div class="vl5">
+                  <div style="padding: 0.3em;"><i style="">First Name:</i>{{lastdetails.fname}}
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-4">
+               <div class="vl5">
+                  <div style="padding: 0.3em;"><i>Practice Type:</i>{{lastdetails.propertyType}}</div>
+               </div>
+            </div>
+            <div class="col-xs-3 col-lg-3 col-md-3 col-sm-3" style="background-color:;">
+               <div class="vl5">
+                  <div style="padding: 0.3em;"><i style="">Provider Type:</i>{{lastdetails.occupation}}</div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <br>
+      <style>
+         table, th, {
+         border-width: thin;
+         }
+      </style>
+      <div class="row">
+         <div class="col-md-6" style="background-color:grey;">Personal Information</div>
+         <div class="col-md-6" style="background-color:grey;">Practice Information</div>
+      </div>
+      <br>
+      <div class="row" style="">
+         <div class="col-md-6">
+            <table>
+               <tr>
+                  <td>First Name</td>:
+                  <td style="color:gray;">{{lastdetails.fname}}</td>
+               </tr>
+               <tr>
+                  <td>Last Name</td>:
+                  <td style="color:gray;">{{lastdetails.lname}}</td>
+               </tr>
+               <tr>
+                  <td>Mobile Number</td>:
+                  <td style="color:gray;">{{lastdetails.phone}}</td>
+               </tr>
+               <tr>
+                  <td>Country</td>:
+                  <td style="color:gray;">{{lastdetails.country}}</td>
+               </tr>
+
+            </table>
+         </div>
+         <div class="col-md-6">
+            <table>
+               <tr>
+                  <td>Provider Type</td>:
+                  <td style="color:gray;">{{lastdetails.occupation}}</td>
+               </tr>
+               <tr>
+                  <td>State License Number</td>:
+                  <td style="color:gray;">{{lastdetails.loan}}</td>
+               </tr>
+               <tr>
+                  <td>Practice Address</td>:
+                  <td style="color:gray;">{{lastdetails.amount}}</td>
+               </tr>
+
+               <tr>
+                  <td>Score</td>:
+                  <td style="color:black;">{{creditscore}}</td>
+               </tr>
+            </table>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-md-6">
+            <button type="button" class="btn btn-primary btn-block" disabled={{creditscoreForwardButton}}
+               {{action "ApproveUpdate" lastdetails record.Key creditscore}}>Score Generated & Forward</button>
+         </div>
+         <div class="col-md-6">
+            <button type="button" class="btn btn-primary btn-block" disabled={{creditscoreButton}}
+               {{action "creditscore" record.Key}}>Generate Score </button>
+         </div>
+      </div>
+      <br>
+      <div style="background-color:lightgrey;">
+         <div class="row">
+            <div class="col-md-1"></div>
+            <b>Score Generation Data Publish Time</b>
+         </div>
+         {{#if isCreditGen}}
+         <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+               Date: {{date}}
+            </div>
+            <div class="col-md-5">
+               Time: {{time}}
+            </div>
+            <br>
+            <br>
+         </div>
+         {{/if}}
+      </div>
+      {{#if showDialog}}
+      {{#paper-dialog class="flex-77" onClose=(action "closeDialog" "cancel") origin=dialogOrigin
+      clickOutsideToClose=true}}
+      {{#paper-toolbar}}
+      {{#paper-toolbar-tools}}
+      Response Sent To Trufts Sucessfully
+      {{#paper-button iconButton=true onClick=(action "closeDialog" "cancel")}}{{paper-icon
+      icon="close"}}{{/paper-button}}
+      {{/paper-toolbar-tools}}
+      {{/paper-toolbar}}
+      {{#paper-dialog-actions class="layout-row"}}
+      {{#paper-button onClick=(action "closeDialog" "cancel")}}Cancel{{/paper-button}}
+      {{#paper-button onClick=(action "okay" "ok")}}OK{{/paper-button}}
+      {{/paper-dialog-actions}}
+      {{/paper-dialog}}
+      {{/if}}
+      <br>
+      <br>
+   </div>
+</div>

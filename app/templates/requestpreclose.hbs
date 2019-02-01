@@ -1,0 +1,81 @@
+{{partial 'head'}}
+{{#if isPreclose }}
+{{/if}}
+<div class="container-fluid">
+   <br>
+   <br>
+   <div class="container">
+      <div class="jumbotron" style="text-align:center;background-color:lightgrey;padding-bottom: 0cm;padding-top: 0cm;">
+         <h2 style="text-align:center;">PRECLOSING REQUEST OF USER</h2>
+      </div>
+      <div class="row">
+         <i style="color:black"> {{notify}}</i>
+      </div>
+      <div class="row">
+          
+            <div class="col-md-2"><label>Request ID:</label></div>
+            <div class="col-md-1"><i style="color:blue"> {{record.Record.requestid}}</i></div>
+      </div>
+      <style>
+         #customers {
+         font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+         border-collapse: collapse;
+         width: 100%;
+         }
+         #customers td, #customers th {
+         border: 1px solid #ddd;
+         padding: 8px;
+         }
+         #customers tr:nth-child(even){background-color: #f2f2f2;}
+         #customers tr:hover {background-color: #ddd;}
+         #customers th {
+         padding-top: 12px;
+         padding-bottom: 12px;
+         text-align: left;
+         background-color: #4CAF50;
+         color: white;
+         }
+      </style>
+      <br>
+      <table id="customers">
+         <tr>
+            <td>EMI Remaining:</td>
+            <td style="color:gray;">{{record.Record.EMI}}</td>
+         </tr>
+         <br>
+         <tr>
+            <td>Installment Per month:</td>
+            <td style="color:gray;">{{record.Record.installment}}</td>
+         </tr>
+         <br>
+         <tr>
+            <td>Document Required for Closing:</td>
+            <td style="color:blue;"><a href={{record.Record.url}}>{{record.Record.url}}</a></td>
+         </tr>
+         <br>
+         <tr>
+            <td>Payment Mode:</td>
+            <td style="color:gray;">{{record.Record.Payment}}</td>
+         </tr>
+      </table>
+      <br>
+      
+         <button type="button" class="btn btn-primary btn-block"{{action "finalPreclose" record }}> agree & close the loan</button>   
+         {{#if showDialog}}
+         {{#paper-dialog class="flex-77" onClose=(action "closeDialog" "cancel") origin=dialogOrigin clickOutsideToClose=true}}
+         {{#paper-toolbar}}
+         {{#paper-toolbar-tools}}
+         Loan has been successfully accepted 
+         {{#paper-button iconButton=true onClick=(action "closeDialog" "cancel")}}{{paper-icon icon="close"}}{{/paper-button}}
+         {{/paper-toolbar-tools}}
+         {{/paper-toolbar}}
+         {{#paper-dialog-actions class="layout-row"}}
+         {{#paper-button onClick=(action "closeDialog" "cancel")}}Cancel{{/paper-button}}
+         {{#paper-button onClick=(action "okay" "ok")}}OK{{/paper-button}}
+         {{/paper-dialog-actions}}
+         {{/paper-dialog}}
+         {{/if}}
+      
+   </div>
+   <br>
+</div>

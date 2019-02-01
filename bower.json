@@ -1,0 +1,9 @@
+{
+  "name": "web-app",
+  "dependencies": {
+    "dinosheets": "0.1.1",
+    "plupload": "v2.1.8",
+    "bootstrap-datepicker": "^1.7.1",
+    "material-steppers": "^2.0.0"
+  }
+}

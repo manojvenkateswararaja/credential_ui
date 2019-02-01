@@ -1,0 +1,39 @@
+{{partial 'head'}}
+{{#if showUserDetails}}
+{{/if}}
+
+<div class="container-fluid" style="background-color:lightgrey">
+   <br>
+   <br>
+   <br>
+   <header class="w3-container " style="margin-left:1cm:">
+      <h4><span class="glyphicon glyphicon-asterisk"></span><em> Legalverifier Participant</em></h4>
+   </header>
+   <br>
+   <div class="jumbotron">
+      <p style="text-align:center;color:black"><b>TOTAL REQUEST</b></p>
+      <div class="container" style="background-color:grey"><b>ALL Request</b></div>
+      <br>
+      <div class ="container">
+         <div class="row">
+            <div class="col-md-3">RequestId:<a href="" {{action 'userdetails'  details }}><b style="color:blue">{{details.Record.requestid}}</b></a></div>
+            <div class="row">
+               <div class="col-md-3"><b>LegalVerification Request Published Time</b></div>
+               <div class="col-md-3"> Date:<small  class="text-muted">{{details.Record.date}}</small></div>
+               <div class="col-md-3">Time:<small  class="text-muted">{{details.Record.time}}</small></div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-9">
+               <div >Status:<i style="color:green;">{{#if IsStatusForCreditRequest}}{{statusForCreditRequest}}{{/if}}</i>
+                  <i style="color:green;">{{#if IsStatusForGenerated}}{{statusForGenerated}}{{/if}}</i>
+               </div>
+            </div>
+         </div>
+         <br>
+      </div>
+   </div>
+</div>
+<div>
+  
+</div>

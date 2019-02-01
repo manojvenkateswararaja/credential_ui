@@ -1,0 +1,42 @@
+{{partial 'head'}}
+{{#if showRequest}} 
+
+<div class="container">
+ <div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" {{action "closeNav"}}>&times;</a>
+  <a >Home</a>
+  <a {{action "goTonewrequest"}}>Personal details</a>
+  <a {{action "goToloan"}}>Loan details</a>
+  <a {{action "goToproperty"}}>Property details</a>
+  <a {{action "goToemployment"}}>Employment details</a>
+</div>
+<div class="container-fluid">
+ {{#paper-grid-list
+    cols="1 md-2 gt-md-6"
+    rowHeight="gt-md-1:1 2:2"
+    gutter="12px gt-sm-8px" as |grid|}} 
+<h2 style="margin-top:72px !important;;padding-top: 0px;margin-left:0"><i>Tell us what your looking for?</i></h2>
+<br>
+<br>
+<br>
+<p style="background-color:cornsilk;margin-top:-20px">
+  {{paper-input label="purpose of loan" value=loan onChange=(action (mut loan)) icon="account balance" }}
+  {{paper-input label="Required Amount" value=amount onChange=(action (mut amount)) icon="attach money"}}
+  <br>
+  Type of Property 
+  <div class="drop2" style="margin-left:299px; margin-top:-28px"> 
+  {{select-component listitem=mylist selecteditemlist=propertyType}}
+  </div>
+  <br>
+ {{#paper-button raised=true warn=true onClick=(action "targetButton")}}Submit{{/paper-button}}
+    </p>
+  {{/paper-grid-list}}
+  <br>
+  <br>
+  <br>
+  <br>
+  </div>
+  </div>
+  
+  {{/if}}
+     

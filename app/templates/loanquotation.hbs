@@ -1,0 +1,73 @@
+{{partial 'head'}}
+{{#if showUserLoanQuote}}
+<div class="container-fluid">
+   <br>
+   <div class="container">
+      <br>
+      <div class="text-align:center;">
+         <b>Loan Quotation</b>
+      </div>
+      <br>  
+      <div class="row">
+         <div class="col-md-6" >
+            Request ID:
+         </div>
+         <div class="col-md-6" >
+            {{validated-input  type="text" model=this  valuePath='requestid' placeholder="Request Id" required=""}}
+           
+         </div>
+      </div>
+      <br>
+      <div class="row">
+         <div class="col-md-6" >
+            Loan Amount in Rs
+         </div>
+         <div class="col-md-6" >
+            {{validated-input  type="text" model=this  valuePath='loanamount' placeholder="amount" required=""}}
+         </div>
+      </div>
+      <br>
+      <div class="row">
+         <div class="col-md-6" >
+            Loan Terms
+         </div>
+         <div class="col-md-6" >
+            {{validated-input  type="number" model=this  valuePath='loanterms' placeholder="loan terms" required=""}} 
+         </div>
+      </div>
+      <br>
+      <div class="row">
+         <div class="col-xs-6 col-lg-6 col-sm-6">
+            Annual Interest Rate 
+         </div>
+         <div class="col-xs-6 col-lg-6 col-sm-6">
+            {{select-component listitem=InterestRate selecteditemlist=amountinterestrate}}
+         </div>
+      </div>
+    
+      <br>
+      <div class="row">
+         <div class="col-xs-6 col-lg-6 col-sm-6" >
+            Payment Per Year
+         </div>
+         <div class="col-xs-6 col-lg-6 col-sm-6">
+            {{validated-input  type="number" model=this  valuePath='paymentperyear' placeholder="payment per year" required=""}}
+         </div>
+      </div>
+      
+      <br>
+      <div class="row">
+         <div class="col-xs-6 col-lg-6 col-sm-6" >
+            Installment per month
+         </div>
+         <div class="col-xs-6 col-lg-6 col-sm-6" >                
+            {{validated-input  type="number" model=this  valuePath='installmentpermonth' placeholder="per month" required=""}}
+         </div>
+      </div>
+      <br>
+      <button type="button"  style="width:20%;margin-left:8cm;margin-top:1cm;"  id="myButton" class="btn btn-primary" {{action "loanschedule"}}>Schedule</button>
+      <br>
+      
+   </div>
+</div>
+{{/if}}

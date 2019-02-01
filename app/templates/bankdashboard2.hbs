@@ -1,0 +1,43 @@
+{{partial 'head'}}
+{{#if showLogin}}
+{{/if}}
+<div class="container-fluid">
+   <br>
+   <br>
+   <br>
+   <br>
+   <div class="row">
+     <div class="col-md-1">
+          </div>
+   <b><em>User Request ID with Data Published Date & Time</em></b>
+
+   </div>
+   <br>
+   <div class="container">
+      <br>
+      <table class="table table-bordered">
+         <thead>
+            <tr>
+               <th>REQUEST ID</th>
+               <th>DATE</th>
+               <th>TIME</th>
+               <th>STATUS</th>
+            </tr>
+         </thead>
+         {{#each showrecords   as |item|}}
+         <tbody>
+            <tr>
+               <td> <a href="" {{action 'userdetails'  item }}><b style="color:blue">{{item.Records.requestid}} </b></a></td>
+               <td> <small  class="text-muted">{{item.Records.date}}</small></td>
+               <td> <small  class="text-muted">{{item.Records.time}}</small></td>
+               <td> <b style="color:green">{{#if isBankPreclose}}{{status}}{{/if}}</b><b style="color:green">{{item.Records.statusForUser}}{{item.Records.statusForBankLegal}}{{item.Records.statusForCreditRequest}}
+                  {{item.Records.bankpreclose}}
+                  <b style="color:tomato;"><a href="" {{action 'postPrecoseRequest'  item }}>{{item.Records.statuspreclose}}</a></b></b>
+               </td>
+            </tr>
+         </tbody>
+         {{/each}}
+      </table>
+   <br>
+</div>
+</div>

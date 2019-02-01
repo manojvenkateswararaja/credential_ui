@@ -1,0 +1,37 @@
+{{partial 'head'}}
+{{#if showDashboard }}
+
+<br>
+<div class="container-fluid" style="margin-top:">
+   <br>
+   <h4 style="margin-left:1cm:"><img src="assets/images/score.jpg" alt="Smiley face" id="check-image-2" height="70"
+         width="90"><em> Score Generator</em></h4>
+   <br>
+   <p style="text-align:center;color:black"><b>TOTAL REQUEST</b></p>
+   <div class="container" style="background-color:"><b>ALL Request</b></div>
+   <br>
+   <div class="container">
+      <div class="row">
+         <div class="col-md-3">RequestId: <a href="" {{action 'userdetails'  details }}><b style="color:blue">{{details.Record.requestid}}</b></a></div>
+         <div class="row">
+            <div class="col-md-3"><b>Score Request Published Time</b></div>
+            <div class="col-md-3"> Date: <small class="text-muted">{{details.Record.date}}</small></div>
+            <div class="col-md-3">Time: <small class="text-muted">{{details.Record.time}}</small></div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-md-9">
+            <div>Status:<b style="color:green;">{{#if
+                  IsStatusForCreditRequest}}{{details.Record.statusForCreditRequest}}{{/if}}
+                  {{#if IsDefaultStatus}} {{status}}{{/if}}</b>
+            </div>
+         </div>
+      </div>
+      <br>
+   </div>
+</div>
+{{!-- </div> --}}
+<div>
+</div>
+
+{{/if}}

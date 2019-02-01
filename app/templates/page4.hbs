@@ -1,0 +1,56 @@
+ {{partial 'head'}}
+{{#if showRequest}}
+<div class="container">
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" {{action "closeNav"}}>&times;</a>
+  <a >Home</a>
+  <a {{action "goTonewrequest"}}>Personal details</a>
+  <a {{action "goToloan"}}>Loan details</a>
+  <a {{action "goToproperty"}}>Property details</a>
+  <a {{action "goToemployment"}}>Employment details</a>
+</div>
+{{!-- <div id="main">
+      <span style="font-size:30px;cursor:pointer" {{action "openNav"}}>&#9776; open</span>
+</div> --}}
+<div class="container-fluid">
+{{#paper-grid-list
+    cols="1 md-2 gt-md-6"
+    rowHeight="gt-md-1:1 2:2"
+    gutter="12px gt-sm-8px" as |grid|}}  
+<h2 style="margin-top:72px !important;;padding-top: 0px;margin-left:0">Tell us about your Employment details</h2>
+<p style="background-color:cornsilk;margin-top:-20px">
+  <br>
+  <br>
+  <br>
+  {{paper-input label="income" value=rupees type="number" onChange=(action (mut rupees)) icon="attach money" }}
+  {{paper-input label="Company Name" value=company  onChange=(action (mut company)) icon="work"}}
+  <br>
+  {{paper-input label="Joining date" type="date" value=joining onChange=(action (mut joining)) icon="work"}}
+  {{paper-input label="Gross fixed salary" type="number" value=salary onChange=(action (mut salary)) icon="work" }}
+ <br>
+  {{#paper-button raised=true warn=true onClick=(action "targetButton")}}Submit{{/paper-button}}
+</p>
+{{#if showDialog}}
+  {{#paper-dialog class="flex-77" onClose=(action "closeDialog" "cancel") origin=dialogOrigin clickOutsideToClose=true}}
+    {{#paper-toolbar}}
+      {{#paper-toolbar-tools}}
+        {{message}}
+        your request id:{{reqid}}
+        {{#paper-button iconButton=true onClick=(action "closeDialog" "cancel")}}{{paper-icon icon="close"}}{{/paper-button}}
+      {{/paper-toolbar-tools}}
+    {{/paper-toolbar}}
+
+    {{#paper-dialog-actions class="layout-row"}}
+      {{#paper-button onClick=(action "closeDialog" "cancel")}}Cancel{{/paper-button}}
+      {{#paper-button onClick=(action "okay" "ok")}}OK{{/paper-button}}
+    {{/paper-dialog-actions}}
+  {{/paper-dialog}}
+{{/if}}
+  {{/paper-grid-list}}
+  <br>
+  <br>
+  <br>
+  </div>
+  </div>
+  {{/if}}
+     

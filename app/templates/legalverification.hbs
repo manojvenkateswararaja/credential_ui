@@ -1,0 +1,159 @@
+{{partial 'head'}}
+{{#if showUserDetails}}
+{{/if}}
+<div class="container-fluid" style="">
+   <script>
+      $(document).ready(function () {
+         // Show or hide the sticky footer button
+         $(window).scroll(function () {
+            if ($(this).scrollTop() > 200) {
+               $('.go-top').fadeIn(200);
+            } else {
+               $('.go-top').fadeOut(200);
+            }
+         });
+         // Animate the scroll to top
+         $('.go-top').click(function (event) {
+            event.preventDefault();
+            $('html, body').animate({
+               scrollTop: 0
+            }, 300);
+         });
+
+      });
+   </script>
+   <br>
+   <div class="container">
+      <br>
+      <br>
+      <h4 style="text-align:center;">USER DATA FOR Application Level 2 Approval</h4>
+      {{!-- <b style="margin-left:12cm;">USER DATA FOR LEGAL VERIFICATION</b> --}}
+
+      <div class="well">
+         <div class="row" style="">
+            <div class="col-md-2"><i style="margin-left:-10%">RequestId:</i><i id="req">{{lastdetails.requestid}}</i></div>
+            <div class="col-md-3">
+               <div class="vl5">
+                  <div style="padding: 0.3em;"><i style="">First Name:</i>{{lastdetails.fname}}
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-4">
+               <div class="vl5">
+                  <div style="padding: 0.3em;"><i style="">Practice Type:</i>{{lastdetails.propertyType}}</div>
+               </div>
+            </div>
+            <div class="col-md-3">
+               <div class="vl5">
+                  <div style="padding: 0.3em;"><i style="">Provider Type:</i>{{lastdetails.occupation}}</div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <br>
+      <style>
+         table, th, {
+         border-width: thin;
+         }
+      </style>
+      {{!-- ro1 --}}
+      <div class="row">
+         <div class="col-md-6" style="background-color:grey;">Personal Information</div>
+         <div class="col-md-6" style="background-color:grey;">Practice Information</div>
+      </div>
+      {{!-- ro1 --}}
+      <br>
+      {{!-- r2 --}}
+      <div class="row">
+         <div class="col-md-6">
+            <table>
+               <tr>
+                  <td>First Name</td>:
+                  <td style="color:gray;">{{lastdetails.fname}}</td>
+               </tr>
+               <tr>
+                  <td>Last Name</td>:
+                  <td style="color:gray;">{{lastdetails.lname}}</td>
+               </tr>
+               <tr>
+                  <td>Mobile Number</td>:
+                  <td style="color:gray;">{{lastdetails.phone}}</td>
+               </tr>
+               <tr>
+                  <td>Country</td>:
+                  <td style="color:gray;">{{lastdetails.country}}</td>
+               </tr>
+
+            </table>
+         </div>
+         <div class="col-md-6">
+            <table>
+               <tr>
+                  <td>Provider Type</td>:
+                  <td style="color:gray;">{{lastdetails.occupation}}</td>
+               </tr>
+               <tr>
+                  <td>State License Number</td>:
+                  <td style="color:gray;">{{lastdetails.loan}}</td>
+               </tr>
+               <tr>
+                  <td>Practice Address</td>:
+                  <td style="color:gray;">{{lastdetails.amount}}</td>
+               </tr>
+               <tr>
+                  <td>Score</td>:
+                  <td style="color:gray;">{{lastdetails.creditscore}}</td>
+               </tr>
+            </table>
+         </div>
+      </div>
+      {{!-- r2 --}}
+      {{!-- r3 --}}
+      <div class="row">
+         <div class="col-xs-6 col-lg-6 col-md-6 col-sm-6 ">
+            <button type="button" class="btn btn-primary btn-block" disabled={{legalButton}}
+               {{action "reject" lastdetails record.Key creditscore}}>Reject</button>
+         </div>
+         <div class="col-xs-6 col-lg-6 col-md-6 col-sm-6 ">
+            <button type="button" class="btn btn-primary btn-block" disabled={{legalButton}}
+               {{action "approved"lastdetails record.Key creditscore }}>Approve</button>
+         </div>
+         <br>
+
+         {{#if isCreditGen}}
+         <div class="row">
+            <div class="col-md-1"></div>
+            <b> approval/rejected published Time</b>
+         </div>
+         <div class="row">
+            <div class="col-md-6">
+               Date:{{date}}
+            </div>
+            <div class="col-md-6">
+               Time:{{time}}
+            </div>
+            <br>
+         </div>
+         {{/if}}
+         <br>
+      </div>
+      {{#if showDialog}}
+      {{#paper-dialog class="flex-77" onClose=(action "closeDialog" "cancel") origin=dialogOrigin
+      clickOutsideToClose=true}}
+      {{#paper-toolbar}}
+      {{#paper-toolbar-tools}}
+      Response Sent To Trufts Sucessfully
+      {{#paper-button iconButton=true onClick=(action "closeDialog" "cancel")}}{{paper-icon
+      icon="close"}}{{/paper-button}}
+      {{/paper-toolbar-tools}}
+      {{/paper-toolbar}}
+      {{#paper-dialog-actions class="layout-row"}}
+      {{#paper-button onClick=(action "closeDialog" "cancel")}}Cancel{{/paper-button}}
+      {{#paper-button onClick=(action "okay" "ok")}}OK{{/paper-button}}
+      {{/paper-dialog-actions}}
+      {{/paper-dialog}}
+      {{/if}}
+      <br>
+      <br>
+   </div>
+</div>

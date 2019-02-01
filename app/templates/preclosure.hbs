@@ -1,0 +1,94 @@
+{{partial 'head'}}
+{{#if showPreclosure}}
+<div class="container-fluid">
+   <br>
+   <div class="container">
+      <br>
+      <h4 style="text-align:center;">PRE-CLOSURE</h4>
+      <br>
+      <div class="row" style="">
+             {{!-- <div class="col-xs-1 col-lg-1 col-md-1 col-sm-1"></div> --}}
+         <div class="col-xs-2 col-lg-2 col-md-2 col-sm-2" >
+            <label>RequestId:</label>
+         </div>
+           <div class="col-xs-1 col-lg-1 col-md-1 col-sm-1">
+            <i style="color:blue;">{{record.Records.requestid}}</i>
+       </div>
+      </div>
+      <div class="row" >
+         <div class="col-xs-6 col-lg-6 col-sm-6" >EMI Remaining</div>
+         <div class="col-xs-6 col-lg-6 col-sm-6">
+            {{validated-input  type="number"   class="form-group"  model=this  valuePath='EMI' placeholder="number of emi" required=""}}
+         </div>
+      </div>
+      
+      <div class="row">
+         <div class="col-xs-6 col-lg-6 col-sm-6">Installment Per Month</div>
+         <div class="col-xs-6 col-lg-6 col-sm-6"> 
+            {{validated-input  type="number"   class="form-group"  model=this  valuePath='installment' placeholder="installment per month" required=""}}
+           
+         </div>
+      </div>
+      
+      <div class="row">
+         <div class="col-xs-6 col-lg-6 col-sm-6">Document Required For Closing</div>
+         <div class="col-xs-6 col-lg-6 col-sm-6">
+            {{#if Notshow_fileupload}}
+            <div id="NR-reactangle">
+               {{#pl-uploader  for="upload_file6" runtimes="html5 flash silverlight" onfileadd="uploadDoc" as |queue|}}
+               <a id="upload_file6" style="font-size:18px">
+                  <p style="margin-top:3mm"> <img src="assets/images/upload.svg" alt="Smiley face" width="20" height="20" style="margin-bottom:3mm">&nbsp; Choose File To Upload</p>
+               </a>
+               {{/pl-uploader}}  
+            </div>
+            {{/if}}
+            {{#if isShow_fileupload}}
+            <div id="NR-reactangle-ok">
+               <p style="color:#68DC83,margin-top:3mm"><b> File Uploaded Sucessfully !!!</b></p>
+            </div>
+            {{/if}}
+         </div>
+      </div>
+      <br>
+      <div class="row">
+         <div class="col-xs-6 col-lg-6 col-sm-6">Payment Mode</div>
+          <div class="col-xs-6 col-lg-6 col-sm-6">{{select-component  listitem=PaymentMode selecteditemlist=Payment}}</div>
+      </div>
+<br>
+      <div class="row"> 
+          <div class="col-md-1"></div>
+          <div class="col-md-10">
+           <button type="button" class="btn btn-color" style="width: 100%;" disabled={{paybutton}} {{action "pay"  record}}>Proceed For Payment</button>
+         </div>
+          <div class="col-md-1"></div>
+      </div>
+<br>
+          <div class="row"> 
+               <div class="col-md-1"></div>
+               <div class="col-md-10">
+         <button type="button" type="button" class="btn btn-primary btn-block" {{action "preclose"  record}}>Apply</button>
+        </div>
+        <div class="col-md-1"></div>
+        </div>
+         {{#if showDialog}}
+         {{#paper-dialog class="flex-77" onClose=(action "closeDialog" "cancel") origin=dialogOrigin clickOutsideToClose=true}}
+         {{#paper-toolbar}}
+         {{#paper-toolbar-tools}}
+         Your Response Has Been Successfully Sent To Bank For Preclosing...!!
+         {{#paper-button iconButton=true onClick=(action "closeDialog" "cancel")}}{{paper-icon icon="close"}}{{/paper-button}}
+         {{/paper-toolbar-tools}}
+         {{/paper-toolbar}}
+         {{#paper-dialog-actions class="layout-row"}}
+         {{#paper-button onClick=(action "closeDialog1" "cancel")}}Cancel{{/paper-button}}
+         {{#paper-button onClick=(action "okay1" "ok")}}OK{{/paper-button}}
+         {{/paper-dialog-actions}}
+         {{/paper-dialog}}
+         {{/if}} 
+      
+      <br>
+      <br>
+   </div>
+   <br>
+   
+</div>
+{{/if}}

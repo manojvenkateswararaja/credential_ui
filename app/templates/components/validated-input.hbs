@@ -1,0 +1,12 @@
+<label> </label>
+{{input type=type value=value placeholder=placeholder class='inputMaterial' name=valuePath errormessage1=errormessage1}}
+<span class="highlight"></span>
+<span class="bar"></span>
+<label> </label>
+<div class="input-error">
+   {{#if showMessage}}
+       <div class="errmsg">
+       <small style="color:red;margin-left:0%;margin-bottom:0%;">{{v-get model valuePath 'message'}}</small>
+       </div>
+   {{/if}}
+</div>

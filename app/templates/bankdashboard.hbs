@@ -1,0 +1,36 @@
+{{partial 'head'}}
+{{#if showLogin }}
+{{/if}}
+
+<div class="container-fluid">
+  <br>
+  <header class="jumbotron my-4">
+    <h1 style="margin-left:-20cm;margin-bottom:-1cm;"><span class="glyphicon glyphicon-dashboard"></span><em>Tufts
+        Dashboard</em></h1>
+  </header>
+</div>
+<p style="text-align:center;color:black"><b>TOTAL REQUEST(S) FOR Tufts Dashboard</b></p>
+<h2><b>ALL Request(s)</b></h2>
+
+<div class="container-fluid">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>USERID</th>
+        <th>DATE</th>
+        <th>TIME</th>
+      </tr>
+    </thead>
+    {{#each showrecords as |item|}}
+
+    <tbody>
+      <tr>
+        <td> <a href="" {{action 'userdetails'  item }}><b style="color:blue">{{item.Key}}</b></a></td>
+        <td> <small class="text-muted">{{item.Record.date}}</small></td>
+        <td> <small class="text-muted">{{item.Record.time}}</small></td>
+      </tr>
+    </tbody>
+    {{/each}}
+  </table>
+  <br>
+</div>

@@ -1,0 +1,115 @@
+{{partial 'head'}}
+{{#if showUserSchedule}}
+{{/if}}
+<br>
+<br>
+<div class="jumbotron-fluid text-left">
+      <h2 style="text-align:left;"><b>Loan Quotation</b></h2>
+      </div>
+ 
+         {{#if IsAlreadyDone}}
+         <div class="alert alert-info">
+            <strong>Info!</strong>Already made decision.
+         </div>
+         {{/if}}
+ 
+         <br>
+         <div class="row" style="">
+            <div class="col-md-1">
+            </div>
+             <div class="col-md-2">
+               <label>RequestID:</label>
+            </div>
+            <div class="col-md-4" style="color:blue;">{{record.Records.requestid}}</div>
+         </div>
+         <br>
+         <div class="row">
+            <div class="col-md-1">
+               
+            </div>
+             <div class="col-md-2" >
+               <label>Amount Of Loan:</label>
+            </div>
+            <div class="col-md-4" >
+               Rs {{record.Records.loanamount}}
+            </div>
+         </div>
+         <br>
+         <div class="row">
+ <div class="col-md-1"></div>
+ <div class="col-md-10">
+         <table class="table table-striped">
+            <thead>
+               <tr>
+                  <th class="text-center">Installment Term</th>
+                  <th class="text-center">Principal(Rs)</th>
+                  <th class="text-center">Starting(Rs)</th>
+                  <th class="text-right">+</th>
+                  <th class="text-center">Interest(Rs)</th>
+                  <th class="text-right">-</th>
+                  <th class="text-center">Payment(Rs)</th>              
+                  <th class="text-right">=</th>
+                  <th class="text-right">Outstanding Balance(Rs)</th>
+               </tr>
+            </thead>
+            <tbody>
+               {{#each payments as |payment|}}
+               <tr>
+                  <td class="text-center">{{payment.id}}</td>
+                  <td class="text-center">{{format-number payment.principalAmt format="0,0.00"}}</td>
+                  <td class="text-right">{{format-number payment.startingPrinciple format="0,0.00"}}</td>
+                  <td>&nbsp;</td>
+                  <td class="text-right">{{format-number payment.interest format="0,0.00"}}</td>
+                  <td>&nbsp;</td>
+                  <td class="text-right">{{format-number payment.payment format="0,0.00"}}</td>
+                  <td>&nbsp;</td>
+                  <td class="text-right">{{format-number payment.principle format="0,0.00"}}</td>
+               </tr>
+               {{/each}}
+            </tbody>
+         </table>
+         </div>
+         <div class="col-md-1"></div>
+         </div>
+         <br>
+         <div class="row">
+           <div class="col-xs-1 col-lg-1 col-md-1 col-sm-1">
+            </div>
+            <button type="button" class="btn btn-primary btn-block" style="width: 83%;" disabled={{IsAlreadyDone}} {{action "userschedule" record}}> agree & next</button>   
+           <div class="col-xs-1 col-lg-1 col-md-1 col-sm-1">
+            </div>
+            </div>
+            <br>
+            <br>
+             <div class="row">
+               <div class="col-xs-1 col-lg-1 col-md-1 col-sm-1" style="">
+            </div>
+          <small>Click Here For Applying Preclosure Request</small>
+          </div>  
+            <div class="row">
+               <div class="col-xs-1 col-lg-1 col-md-1 col-sm-1" style="">
+            </div>
+            <button type="button" id="myButton" class="btn btn-primary btn-block" style="width: 83%;" disabled={{DisablePrecoleButton}} {{action "gotoPreclose" item}}>Pre-closure</button>
+            <div class="col-xs-1 col-lg-1 col-md-1 col-sm-1">
+            </div>
+            </div>
+            {{#if showDialog}}
+            {{#paper-dialog class="flex-77" onClose=(action "closeDialog" "cancel") origin=dialogOrigin clickOutsideToClose=true}}
+            {{#paper-toolbar}}
+            {{#paper-toolbar-tools}}
+            Loan Has Been Successfully Accepted 
+            {{#paper-button iconButton=true onClick=(action "closeDialog" "cancel")}}{{paper-icon icon="close"}}{{/paper-button}}
+            {{/paper-toolbar-tools}}
+            {{/paper-toolbar}}
+            {{#paper-dialog-actions class="layout-row"}}
+            {{#paper-button onClick=(action "closeDialog" "cancel")}}Cancel{{/paper-button}}
+            {{#paper-button onClick=(action "okay" "ok")}}OK{{/paper-button}}
+            {{/paper-dialog-actions}}
+            {{/paper-dialog}}
+            {{/if}}
+         
+         <br>
+         <br>
+      
+      {{!-- <button {{action "print"}}>Take your Print</button> --}}
+ 

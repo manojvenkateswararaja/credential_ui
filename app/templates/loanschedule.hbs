@@ -1,0 +1,111 @@
+{{partial 'head'}}
+{{#if showLogin}}
+{{/if}}
+
+	<br>
+	<br>
+  <div class="container-fluid text-center">
+    <div class="row">
+       <h4>LOAN SCHEDULE</h4>
+   </div>
+   </div>
+   
+  <div class="container-fluid ">
+<div class="row">
+    <div class="form-group col-md-1"></div>
+  <div class="form-group col-md-10">
+    <label>Loan Amount: </label>
+       {{loanamount}}
+    </div>
+      <div class="form-group col-md-1"></div>
+  </div>
+</div>
+<div class="container-fluid">
+<div class="row">
+    <div class="form-group col-md-1"></div>
+  <div class="form-group col-md-5">
+    <label>Interest Rate</label>
+      {{input value=interestRate class="form-control"}}  
+    </div>
+      <div class="form-group col-md-6"></div>
+  </div>
+</div>
+<div class="container-fluid">
+<div class="row">
+    <div class="form-group col-md-1"></div>
+  <div class="form-group col-md-5">
+    <label>Term(in months)</label>
+            {{input value=loanTerm class="form-control"}}
+    </div>
+      <div class="form-group col-md-6"></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="form-group col-md-1"></div>
+  <div class="form-group col-md-10">
+         <table class="table table-striped">
+            <thead>
+               <tr>
+                  <th class="text-center">Installment Term</th>
+                  <th class="text-center">Principal(Rs)</th>
+                  <th class="text-center">Starting(Rs)</th>
+                  <th class="text-right">+</th>
+                  <th class="text-center">Interest(Rs)</th>
+                  <th class="text-right">-</th>
+                  <th class="text-center">Payment(Rs)</th>
+                  <th class="text-right">=</th>
+                  <th class="text-right">Outstanding Balance(Rs)</th>
+               </tr>
+            </thead>
+            <tbody>
+               {{#each payments as |payment|}}
+               <tr>
+                  <td class="text-center">{{payment.id}}</td>
+                  <td class="text-center">{{format-number payment.principalAmt format="0,0.00"}}</td>
+                  <td class="text-right">{{format-number payment.startingPrinciple format="0,0.00"}}</td>
+                  <td>&nbsp;</td>
+                  <td class="text-right">{{format-number payment.interest format="0,0.00"}}</td>
+                  <td>&nbsp;</td>
+                  <td class="text-right">{{format-number payment.payment format="0,0.00"}}</td>
+                  <td>&nbsp;</td>
+                  <td class="text-right">{{format-number payment.principle format="0,0.00"}}</td>
+                  
+               </tr>
+               {{/each}}
+            </tbody>
+         </table>
+         </div>
+         <div class="form-group col-md-1"></div>
+         </div>
+
+      <br>
+          <div class="row">
+               <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+               <div class="btngroup">
+             <button type="button" class="btn btn-color" style="width: 100%;" {{action "ok" details record}}>Forward Quotation to user</button>
+           </div>
+           </div>
+            <div class="col-md-4">
+            </div>
+            </div>
+<br>
+
+{{#if showDialog}}
+{{#paper-dialog class="flex-77" onClose=(action "closeDialog" "cancel") origin=dialogOrigin clickOutsideToClose=true}}
+{{#paper-toolbar}}
+{{#paper-toolbar-tools}}
+Loan Quotation for requested user
+{{#paper-button iconButton=true onClick=(action "closeDialog" "cancel")}}{{paper-icon icon="close"}}{{/paper-button}}
+{{/paper-toolbar-tools}}
+{{/paper-toolbar}}
+{{#paper-dialog-actions class="layout-row"}}
+{{#paper-button onClick=(action "closeDialog" "cancel")}}Cancel{{/paper-button}}
+{{#paper-button onClick=(action "okay" "ok")}}OK{{/paper-button}}
+{{/paper-dialog-actions}}
+{{/paper-dialog}}
+{{/if}}
+
+

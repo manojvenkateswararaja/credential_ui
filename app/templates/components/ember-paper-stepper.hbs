@@ -1,0 +1,20 @@
+{{#paper-stepper currentStep=currentStep onStepChange=(action (mut currentStep))
+  onStepperCompleted=(action "saveModel") as |stepper|}}
+ 
+  {{#stepper.step label="Select how it looks" as |step|}}
+    {{#step.body}}
+    {{!-- {{partial 'newrequest'}} --}}
+Test
+      {{!-- Content here. Probably some form. --}}
+    {{/step.body}}
+    {{#step.actions as |nextStep previousStep|}}
+      {{#paper-button primary=true raised=true onClick=(action nextStep)}}
+        Continue
+      {{/paper-button}}
+      {{#paper-button onClick=(action previousStep)}}
+        Back
+      {{/paper-button}}
+    {{/step.actions}}
+  {{/stepper.step}}
+  {{!-- add as many steps as necessary --}}
+{{/paper-stepper}}

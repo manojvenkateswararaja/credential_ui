@@ -1,0 +1,70 @@
+{{partial 'head'}}
+{{#if showLogin}}
+{{/if}}
+<div class="container-fluid" style="background-color:">
+   <br>
+   <br>
+   <br>
+   <br>
+   <div class="row">
+      <div class="col-xs-3 col-lg-3 col-sm-3">
+         <b>
+            <em>
+               <span class="glyphicon glyphicon-tasks"></span>
+               <div class="col-xs-1 col-lg-1 col-sm-1"></div>
+               My Account
+            </em>
+
+            {{#if isCommitAuthorize}}
+            <div class="modal-body">
+               step1)After Agreeing Credentialing schedule<br>
+               step2)check response<br>
+               step3)you can see button called as preclose<br>
+               step4)you can apply by click on it.
+            </div>
+            {{/if}}
+         </b>
+      </div>
+      <div class="col-xs-4 col-lg-4 col-sm-4"></div>
+      <div class="col-xs-5 col-lg-5 col-sm-5">
+         <div class="modal-dialog">
+            <!-- Modal content-->
+
+         </div>
+      </div>
+   </div>
+   <div class="row">
+      <span class="glyphicon glyphicon-eye-open" style="margin-left:1cm"></span> Check your response by clicking on
+      RequestID
+   </div>
+   <br>
+   <table class="table table-bordered">
+      <thead>
+         <tr>
+            <th>REQUEST ID</th>
+            <th>DATE</th>
+            <th>TIME</th>
+            <th>STATUS</th>
+         </tr>
+      </thead>
+      {{#each showrecords as |item|}}
+      <tbody>
+         <tr>
+            <td> <a href="" {{action 'userloanschedule'  item }}><b style="color:blue">{{item.Records.requestid}} </b></a></td>
+            <td> <small class="text-muted">{{item.Records.date}}</small></td>
+            <td> <small class="text-muted">{{item.Records.time}}</small></td>
+            <td> <b style="color:green">{{#if isBankPreclose}}{{status}}{{/if}}</b>
+               <b style="color:green">{{item.Records.statusForUser}}
+                  {{item.Records.statusForBankLegal}}
+                  {{item.Records.statusForCreditRequest}}
+                  {{item.Records.statuspreclose}}
+                  {{item.Records.userpreclosestatus}}
+               </b>
+            </td>
+         </tr>
+      </tbody>
+      {{/each}}
+   </table>
+   <br>
+
+</div>

@@ -1,0 +1,176 @@
+{{partial 'head'}}
+{{#if showLogin}}
+{{/if}}
+<br>
+
+<div class="container-fluid">
+   <br>
+   <div class="container">
+      <br>
+      <h4 style="text-align:center;"><em>USER DETAILS VERIFICATION</em></h4>
+      {{#if IsUserDetails}}
+      <div class="alert alert-success">
+         <strong>Successfully Score generated</strong><br>
+         Please also get this RequestId verified by Legal Validator
+      </div>
+      {{/if}}
+      {{#if IsUserDetailsApproves}}
+      <div class="alert alert-success">
+         <strong>Legal Verification Successfully Done </strong><br>
+         Proceed Further For Approve Or Reject
+      </div>
+      {{/if}}
+      {{#if IsAlreadyDone}}
+      <div class="alert alert-info">
+         <strong>Info!</strong>Already made decision.
+      </div>
+      {{/if}}
+      <div class="well">
+         <div class="row" style="">
+            <div class="col-md-2"><i style="margin-left:-10%">RequestId:</i><i id="req">{{record.Record.requestid}}</i></div>
+            <div class="col-md-3" style="background-color:;">
+               <div class="vl5">
+                  <div style="padding: 0.3em;"><i style="">First Name:</i>{{record.Record.fname}}
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-4" style="background-color:;">
+               <div class="vl5">
+                  <div style="padding: 0.3em;"><i style="">Practice Type:</i>{{record.Record.propertyType}}</div>
+               </div>
+            </div>
+            <div class="col-md-3" style="background-color:;">
+               <div class="vl5">
+                  <div style="padding: 0.3em;"><i style="">Provider Type:</i>{{record.Record.occupation}}</div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <br>
+      <style>
+         table, th, {
+            border-width: thin;
+            }
+         </style>
+      <div class="row">
+         <div class="col-md-6" style="background-color:grey;">Personal Information</div>
+         <div class="col-md-6" style="background-color:grey;">Practice Information</div>
+      </div>
+      <br>
+      <div class="row">
+         <div class="col-md-6">
+            <table>
+               <tr>
+                  <td>First Name</td>:
+                  <td style="color:gray;">{{record.Record.fname}}</td>
+               </tr>
+               <tr>
+                  <td>Last Name</td>:
+                  <td style="color:gray;">{{record.Record.lname}}</td>
+               </tr>
+               <tr>
+                  <td>Mobile Number</td>:
+                  <td style="color:gray;">{{record.Record.phone}}</td>
+               </tr>
+               <tr>
+                  <td>Country</td>:
+                  <td style="color:gray;">{{record.Record.country}}</td>
+               </tr>
+
+
+            </table>
+         </div>
+         <div class="col-md-6">
+            <table>
+               <tr>
+                  <td>Provider Type</td>:
+                  <td style="color:gray;">{{record.Record.occupation}}</td>
+               </tr>
+               <tr>
+                  <td>State License Number</td>:
+                  <td style="color:gray;">{{record.Record.loan}}</td>
+               </tr>
+               <tr>
+                  <td>Practice Address</td>:
+                  <td style="color:gray;">{{record.Record.amount}}</td>
+               </tr>
+
+               <tr>
+                  <td>Score</td>:
+                  <td style="color:blue;">{{record.Record.creditscore}}</td>
+               </tr>
+               <tr>
+                  <td>Status Of Each Verifier</td>:
+                  <td style="color:blue;">{{record.Record.statusForCreditRequest}}</td>
+               </tr>
+            </table>
+         </div>
+      </div>
+      <br>
+      {{!-- <div style=" margin-top:1cm;">
+      </div>
+      <div style=" margin-top:1cm;"> --}}
+         <button type="button" class="btn btn-primary btn-block" disabled={{isLegalDisableButton}}
+            {{action "LegalValidater" record details}}>Proceed for APP level 2 validation</button>
+         {{!-- <button id="user-btn3" {{action "credit" records showrecords}}>Get verify from legal validator</button>
+         --}}
+         {{#if showDialog}}
+         {{#paper-dialog class="flex-77" onClose=(action "closeDialog" "cancel") origin=dialogOrigin
+         clickOutsideToClose=true}}
+         {{#paper-toolbar}}
+         {{#paper-toolbar-tools}}
+         Request Has Been Successfully Sent To APP level 2 Approval Validator
+         {{#paper-button iconButton=true onClick=(action "closeDialog" "cancel")}}{{paper-icon
+         icon="close"}}{{/paper-button}}
+         {{/paper-toolbar-tools}}
+         {{/paper-toolbar}}
+         {{#paper-dialog-actions class="layout-row"}}
+         {{#paper-button onClick=(action "closeDialog" "cancel")}}Cancel{{/paper-button}}
+         {{#paper-button onClick=(action "okay1" "ok")}}OK{{/paper-button}}
+         {{/paper-dialog-actions}}
+         {{/paper-dialog}}
+         {{/if}}<br>
+         {{!-- </div> --}}
+      {{!-- <div style=" margin-top:1cm;"> --}}
+         <button type="button" class="btn btn-primary btn-block" disabled={{isApprove}}
+            {{action "LoanApprove" record details}}> App level 2 Approval </button>
+         {{#if showDialogApprove}}
+         {{#paper-dialog class="flex-77" onClose=(action "closeDialog" "cancel") origin=dialogOrigin
+         clickOutsideToClose=true}}
+         {{#paper-toolbar}}
+         {{#paper-toolbar-tools}}
+         Request Has Been Successfully Approve
+         {{#paper-button iconButton=true onClick=(action "closeDialog2" "cancel")}}{{paper-icon
+         icon="close"}}{{/paper-button}}
+         {{/paper-toolbar-tools}}
+         {{/paper-toolbar}}
+         {{#paper-dialog-actions class="layout-row"}}
+         {{#paper-button onClick=(action "closeDialog" "cancel")}}Cancel{{/paper-button}}
+         {{#paper-button onClick=(action "okay2" "ok")}}OK{{/paper-button}}
+         {{/paper-dialog-actions}}
+         {{/paper-dialog}}
+         {{/if}}<br>
+         {{!-- </div> --}}
+      {{!-- <div style=" margin-top:1cm;"> --}}
+         <button type="button" class="btn btn-primary btn-block" disabled={{isReject}}
+            {{action "LegalValidaterRejected" record details}}>Reject</button>
+         {{#if showDialogForReject}}
+         {{#paper-dialog class="flex-77" onClose=(action "closeDialog" "cancel") origin=dialogOrigin
+         clickOutsideToClose=true}}
+         {{#paper-toolbar}}
+         {{#paper-toolbar-tools}}
+         App level 2 has been rejected
+         {{#paper-button iconButton=true onClick=(action "closeDialog" "cancel")}}{{paper-icon
+         icon="close"}}{{/paper-button}}
+         {{/paper-toolbar-tools}}
+         {{/paper-toolbar}}
+         {{#paper-dialog-actions class="layout-row"}}
+         {{#paper-button onClick=(action "closeDialog" "cancel")}}Cancel{{/paper-button}}
+         {{#paper-button onClick=(action "okay" "ok")}}OK{{/paper-button}}
+         {{/paper-dialog-actions}}
+         {{/paper-dialog}}
+         {{/if}}
+         <br>
+      </div>
+
+   </div>
